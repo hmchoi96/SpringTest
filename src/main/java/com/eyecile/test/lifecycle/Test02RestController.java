@@ -5,8 +5,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.eyecile.test.lifecycle.model.board;
 
 @RestController // controller + responsebody
 public class Test02RestController {
@@ -45,4 +49,36 @@ public class Test02RestController {
 		
 		return movieList;
 	}
+	
+	@RequestMapping("/lifecycle/test02/2")
+	public List<board> boardList() {
+		
+		List<board> boardList = new ArrayList<>();
+		
+		board content1 = new board();
+		content1.setTitle("안녕하세요");
+		content1.setUser("kisado");
+		content1.setContent("잘부탁드립니다!");
+		
+		boardList.add(content1);
+		
+		
+		return boardList;
+	}
+	
+	@RequestMapping("/lifecycle/test02/3")
+	public ResponseEntity<board> entity() {
+		
+		board content1 = new board();
+		content1.setTitle("안녕하세요");
+		content1.setUser("kisado");
+		content1.setContent("잘부탁드립니다!");
+		
+		ResponseEntity<board> entity = new ResponseEntity<>(content1, HttpStatus.INTERNAL_SERVER_ERROR);
+		
+		return entity;
+	}
+	
+	
+	
 }
