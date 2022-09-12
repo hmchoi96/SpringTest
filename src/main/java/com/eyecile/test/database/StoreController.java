@@ -16,6 +16,7 @@ public class StoreController {
 	@Autowired
 	private StoreBO storeBO;
 	
+	// store테이블의 모든행을 json 으로 response에 전달 한다.
 	@RequestMapping("/database/test01/1")
 	@ResponseBody
 	public List<Store> test01() {
